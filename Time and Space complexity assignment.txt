@@ -1,0 +1,107 @@
+﻿Question 1. Analyze the time complexity of the following Java code and suggest a way to improve it:
+        int sum = 0;
+for(int i = 1; i <= n; i++) 
+{
+for(int j = 1; j <= i; j++)
+         {
+sum++;
+}
+}
+
+
+Ans.:- The time complexity of this code is O(n^2). The complexity is due to the presence of two for loops in the code. 
+        The code can be converted to O(1) because the code consists of adding the numbers from 1 to N and giving it a sum.
+        Code:-
+        int sum=(n*(n+1))/2;
+
+
+
+
+Question 2: Find the value of T(2) for the recurrence relation T(n) = 3T(n-1) + 12n, given that T(0) = 5.
+
+
+Ans.:-  According to the relation of recurrence the base case given as T(0)=5, the T(2) = 105.
+
+
+
+
+Question 3: Given a recurrence relation, solve it using a substitution method.
+Relation : T(n) = T(n - 1) + c
+
+
+Ans.:- 
+T(n) = O(n)
+T(n) <= cn where c is some constant.
+T(n) = T(n - 1) + c
+T(n - 1) = T(n - 2) + c
+T(n - 2) = T(n - 3) + c
+T(2) = T(1) + c
+T(n) = T(1) + cn
+T(n) = k + cn
+T(n) <= cn
+T(n) = O(n).
+
+
+
+
+Question 4: Given a recurrence relation:
+T(n) = 16T(n/4) + n2 logn
+Find the time complexity of this relation using the master theorem.
+Ans.:- 
+T(n)=16T(n/4)+n2 logn
+Let,a=16 b=4 k=2 p=1 bk=42=16
+a=bk
+so,p>-1
+so,T(n)=θ(n logab*logp+1n)
+so,T(n)=θ(nlog164*log1+1n)=θ(n1/2log2n)
+
+
+
+
+Question 5: Solve the following recurrence relation using recursion tree method T(n) = 2T(n/2) + n
+
+
+Ans.:- 
+Recursion Tree:
+Level 0: T(n) = 2T(n/2) + n
+Level 1: T(n/2) = 2T(n/4) + n/2
+Level 2: T(n/4) = 2T(n/8) + n/4
+...
+Level k: T(n/2^k) = 2T(n/2^(k+1)) + n/2^k
+
+
+Simplified Solution:
+The cost at each level is 'n'. The total number of levels is 'log2n + 1'. 
+So, the total cost is n*(log2n + 1), which simplifies to nlog2n + n. 
+Therefore, T(n) = θ(nlogn).
+
+
+
+
+Question 6. T(n) = 2T(n/2) + K, Solve using Recurrence tree method.
+
+
+Ans.:- 
+Recurrence Relation: T(n) = 2T(n/2) + K
+Method: Recursion Tree
+
+
+1. Draw Recursion Tree
+2. Calculate height of tree:
+   - (n/2^k) = 1 => n = 2^k => k = log2(n)
+3. Calculate cost at each level:
+   - Level 0 = K
+   - Level 1 = 2K
+   - Level 2 = 4K
+   - ...
+4. Calculate number of nodes at each level:
+   - Level 0 = 2^0 = 1
+   - Level 1 = 2^1 = 2
+   - Level 2 = 2^2 = 4
+   - ...
+5. Calculate final cost:
+   - Total Cost = Cost of all levels except last level + Cost of last level
+   - Total Cost = K + 2K + 4K + ... + log(n) times + O(1) * n
+   - T(n) = K(2^0 + 2^1 + 2^2 + ... + log(n) times) + O(n)
+   - T(n) = K + O(n)
+   - T(n) = O(n)
